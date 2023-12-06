@@ -12,41 +12,122 @@
     <title>Spike 1</title>
   </head>
   <body>
-    <div class="image-container"></div>
-    <div class="text">oba</div>
+    <main>
+      <div class="image-container"></div>
+      <div class="text">
+        <span>o</span>
+        <span class="middle">b</span>
+        <span>a</span>
+      </div>
+    </main>
   </body>
 </html>
+
 <style>
+  body {
+    overflow: hidden;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 1s ease-out 4.75s 1 loaded;
+  }
+
   .image-container {
     background-image: url("gradient-blur.jpg"); /* The image used - important! */
-    /* background-size: cover; */
-    /* position: relative; Needed to position the cutout text in the middle of the image */
-    height: 100vw; /* Some height */
-    animation: 2s ease-out 0s 1 gradient;
+    height: 100vh;
+    width: 100%;
+    scale: 0.5;
+    animation: 3s linear 0s infinite gradient;
   }
 
   .text {
     background-color: white;
     color: black;
-    font-size: 15vw; /* Responsive font size */
+    font-size: 15rem;
     font-family: "Poppins", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
-    margin: 0 auto; /* Center the text container */
-    /* width: 100%; */
-    /* text-align: center; Center text */
-    position: fixed;
-    /* top: 50%; Position text in the middle */
-    /* left: 50%; Position text in the middle */
-    /* transform: translate(-50%, -50%); Position text in the middle */
+    width: 50%;
+    padding: 25rem;
+    text-align: center;
+    position: absolute;
     mix-blend-mode: screen; /* This makes the cutout text possible */
   }
 
+  .middle {
+    margin: 0 -3.4rem 0 -3.825rem;
+  }
+
+  span:nth-of-type(1) {
+    animation: 0.75s ease-in-out 3s 1 letter-animation;
+  }
+  span:nth-of-type(2) {
+    animation: 0.75s ease-in-out 3.5s 1 letter-animation;
+  }
+  span:nth-of-type(3) {
+    animation: 0.75s ease-in-out 4s 1 letter-animation;
+  }
   @keyframes gradient {
     0% {
-      transform: translateX(-100%);
+      transform: translatex(-30rem);
+    }
+    25% {
+      transform: translateY(15rem);
+    }
+    50% {
+      transform: translatex(30rem);
+    }
+    75% {
+      transform: translatey(-15rem);
     }
     100% {
-      transform: translateX(0);
+      transform: translateX(-30rem);
+    }
+  }
+
+  @keyframes loaded {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(5);
+      opacity: 0%;
+    }
+  }
+
+  @keyframes letter-animation {
+    0% {
+      font-family: "Poppins", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+    12.5% {
+      font-family: "Courier New", Courier, monospace;
+    }
+    25% {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    37.5% {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    }
+    50% {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+    62.5% {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    75% {
+      font-family: "Times New Roman", Times, serif;
+    }
+    87.5% {
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+    100% {
+      font-family: Arial, Helvetica, sans-serif;
     }
   }
 </style>
